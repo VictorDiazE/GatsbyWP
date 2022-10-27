@@ -6,6 +6,34 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    /*
+     * Gatsby's data processing layer begins with “source”
+     * plugins. Here the site sources its data from WordPress.
+     */
+    // highlight-start
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        /*
+         * The full URL of the WordPress site's GraphQL API.
+         * Example : 'https://www.example-site.com/graphql'
+         */
+        url: `https://wpgatsbydemo.wpengine.com/graphql`,
+      },
+    },
+    // highlight-end
+    /**
+     * The following plugins aren't required for gatsby-source-wordpress,
+     * but we need them so the default starter we installed above will keep working.
+     **/
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
